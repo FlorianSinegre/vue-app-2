@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
+  <div class="pollution">
 
-    <app/>
+    <pollutionVue></pollutionVue>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import app from '@/components/Weather.vue'
+import pollutionVue from '@/components/pollution.vue'
 
 export default {
-  name: 'Home',
-  components: {
-    app
-  }
+  name: 'pollution',
+ components:{
+   pollutionVue
+ }
 }
 </script>

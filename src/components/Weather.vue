@@ -1,27 +1,89 @@
-
 <template>
   <div id="app">
 
-    <main>
-      <div class="search-box">
-        <input type="text"  class="search-bar" placeholder="Rechercher..." v-model="query" @keypress="fetchWeather"/>
-      </div>
-      <div class="weather-wrap" v-if="typeof weather.main !='undefined'">
-        <div class="location-box">
-          <div class="location">{{weather.name}},{{weather.sys.country}}</div>
-          <div class="date">{{dateBuilder()}}</div>
-        </div>
-        <div class="weather-box">
-          <div class="temp">{{Math.round(weather.main.temp)}}°C</div>
-          <div class="weather">{{ weather.weather[0].main }}</div>
-        </div>
-      </div>
-    </main>
+    <div class="search-box">
+      <input type="text"  class="search-bar" placeholder="Rechercher..." v-model="query" @keypress="fetchWeather"/>
+    </div>
+
+    <div class="weather-wrap" v-if="typeof weather.main !='undefined'">
+      <v-card
+          class="mx-auto"
+          max-width="400"
+      >
+        <v-list-item two-line>
+          <v-list-item-content>
+            <v-list-item-title class="headline">
+              {{weather.name}},{{weather.sys.country}}
+            </v-list-item-title>
+            <v-list-item-subtitle>{{dateBuilder()}}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-card-text>
+          <v-row align="center">
+            <v-col
+                class="display-3"
+                cols="6"
+            >
+              {{Math.round(weather.main.temp)}}°C
+            </v-col>
+            <v-col cols="6">
+
+              <v-img
+                  src="https://cdn.vuetifyjs.com/images/cards/sun.png"
+                  alt="Sunny image"
+                  width="92"
+              ></v-img>
+
+            </v-col>
+          </v-row>
+        </v-card-text>
+
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon>mdi-send</v-icon>
+          </v-list-item-icon>
+          <v-list-item-subtitle>{{weather.wind.speed}} Km/H</v-list-item-subtitle>
+        </v-list-item>
+
+        <!--  <v-slider
+              v-model="time"
+              :max="6"
+              :tick-labels="labels"
+              class="mx-4"
+              ticks
+          ></v-slider>
+
+          <v-list class="transparent">
+            <v-list-item
+                v-for="item in forecast"
+                :key="item.day"
+            >
+              <v-list-item-title>{{ item.day }}</v-list-item-title>
+
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-subtitle class="text-right">
+                {{ item.temp }}
+              </v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
+
+          <v-divider></v-divider>
+       -->
+        <v-card-actions>
+          <v-btn text>
+            {{ weather.weather[0].description }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data (){
@@ -74,7 +136,7 @@ body{
 }
 
 #app{
- /* background-image: url();*/
+  background-image: url('https://pixabay.com/photos/thunderstorm-ocean-twilight-clouds-3440450/');
   background-size: cover;
   background-position: bottom;
   transition: 0.4s;
@@ -89,8 +151,10 @@ main{
 }
 
 .search-box{
-  width: 100%;
-  margin-bottom: 30px;
+
+  margin: auto;
+  width: 70%;
+  margin-bottom: 90px;
 }
 
 .search-box .search-bar{
@@ -103,6 +167,7 @@ main{
   border: none;
   outline: none;
   background: none;
+  margin-top: 30px;
 
   background-color: rgba(255,255,255,0.5);
   border-radius: 0px;
