@@ -2,15 +2,15 @@
     <template>
       <div id="pollutionVue">
 
-        <h1 style="margin-top: 50px; font-size: 30px" >Entrez les coordonnées d'une region pour afficher la concentration de pollution de celle-ci.</h1>
+        <h1 style="margin-top: 50px; font-size: 30px" >Entrez les coordonnées d'une region pour afficher la concentration de pollution de celle-ci.(j'avais pas vu c'est en Http....)</h1>
         <v-text-field
-            placeholder="latidude"
+            placeholder="Latidude"
             :rules="rules"
             hide-details="auto"
             v-model="query" @keypress="fetchWeather"
             style="width: 200px; margin: auto; margin-top: 50px"
         ></v-text-field>
-        <v-text-field  placeholder="longitude" v-model="query2" @keypress="fetchWeather" style="width: 200px; margin: auto; "></v-text-field>
+        <v-text-field  placeholder="Longitude" v-model="query2" @keypress="fetchWeather" style="width: 200px; margin: auto; "></v-text-field>
 
         <div class="weather-wrap" v-if="typeof weather.coord !='undefined'">
           <v-card

@@ -23,8 +23,8 @@
             elevation="2"
             style="width: 400px; margin: auto; font-style: italic; font-size: 40px; margin-top: 20px"
         >
-          latitude  : {{ weather.coord.lat }}
-          longitude : {{ weather.coord.lon }}
+          Latitude  : {{ weather.coord.lat }}
+          Longitude : {{ weather.coord.lon }}
         </v-card>
 
       </v-card>
