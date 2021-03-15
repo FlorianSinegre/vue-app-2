@@ -8,9 +8,37 @@
             :rules="rules"
             hide-details="auto"
             v-model="query" @keypress="fetchWeather"
-            style="width: 200px; margin: auto; margin-top: 50px"
+            style="width: 200px; margin: auto; display: block;
+            margin-top: 90px;
+            padding: 15px;
+            color: #313131;
+            font-size: 20px;
+            appearance: none;
+            border: none;
+            outline: none;
+            background: none;
+            margin-top: 30px;
+
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 0px;
+            transition: 0.4s;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.25);"
         ></v-text-field>
-        <v-text-field  placeholder="Longitude" v-model="query2" @keypress="fetchWeather" style="width: 200px; margin: auto; "></v-text-field>
+        <v-text-field  placeholder="Longitude" v-model="query2" @keypress="fetchWeather" style="width: 200px; margin: auto; display: block;
+
+            padding: 15px;
+            color: #313131;
+            font-size: 20px;
+            appearance: none;
+            border: none;
+            outline: none;
+            background: none;
+            margin-top: 30px;
+
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 0px;
+            transition: 0.4s;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.25); "></v-text-field>
 
         <div class="weather-wrap" v-if="typeof weather.coord !='undefined'">
           <v-card
