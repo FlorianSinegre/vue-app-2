@@ -61,6 +61,16 @@
 
           </v-card>
         </div>
+        <div class="container">
+
+          <v-img
+              style="margin: auto"
+              max-height="90%"
+              max-width="90%"
+              src="https://cdn.discordapp.com/attachments/502484093590831129/820989612239487016/unknown.png"
+          ></v-img>
+        </div>
+
       </div>
     </template>
 
@@ -114,5 +124,8 @@
     .alert{
       background-color: green;
       margin: auto;
+    }
+    .container{
+      display: flex;
     }
     </style>
