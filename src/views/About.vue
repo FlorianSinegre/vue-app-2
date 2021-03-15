@@ -2,7 +2,7 @@
   <div id="app">
 
     <div class="search-box">
-      <input type="text"  class="search-bar" placeholder="Rechercher..." v-model="query" @keypress="fetchWeather"/>
+      <input type="text"  class="search-bar" placeholder="Entrez le nom d'une ville" v-model="query" @keypress="fetchWeather"/>
     </div>
 
     <div class="weather-wrap" v-if="typeof weather.main !='undefined'">
@@ -18,43 +18,15 @@
             <v-list-item-subtitle>{{dateBuilder()}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+        <v-card
 
-        <v-card-text>
-          <v-row align="center">
-            <v-col
-                class="display-3"
-                cols="6"
-            >
-              {{Math.round(weather.main.temp)}}°C
-            </v-col>
-            <v-col cols="6">
-              <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/sun.png"
-                  alt="Sunny image"
-                  width="92"
-              ></v-img>
-            </v-col>
-          </v-row>
-        </v-card-text>
+            elevation="2"
+            style="width: 400px; margin: auto; font-style: italic; font-size: 40px; margin-top: 20px"
+        >
+          latitude  : {{ weather.coord.lat }}
+          longitude : {{ weather.coord.lon }}
+        </v-card>
 
-        <v-list-item>
-          <v-list-item-icon>
-            <v-icon>mdi-send</v-icon>
-          </v-list-item-icon>
-          <v-list-item-subtitle>{{weather.wind.speed}} Km/H</v-list-item-subtitle>
-        </v-list-item>
-
-        <v-card-actions>
-          <v-btn text>
-            {{ weather.weather[0].description }}
-          </v-btn>
-        </v-card-actions>
-        <v-card-actions>
-          <v-btn text>
-            longitude : {{ weather.coord.lon }}
-            latitude  : {{ weather.coord.lat }}
-          </v-btn>
-        </v-card-actions>
       </v-card>
       </div>
   </div>
@@ -66,16 +38,6 @@ export default {
   data (){
 
     return{
-      labels: ['SU', 'MO', 'TU', 'WED', 'TH', 'FR', 'SA'],
-      time: 0,
-      forecast: [
-        { day: 'Tuesday', icon: 'mdi-white-balance-sunny', temp: '24\xB0/12\xB0' },
-        { day: 'Wednesday', icon: 'mdi-white-balance-sunny', temp: '22\xB0/14\xB0' },
-        { day: 'Thursday', icon: 'mdi-cloud', temp: '25\xB0/15\xB0' },
-      ],
-
-
-
       api_key: 'b0cd5ffd3f9f23b811c95a7947e83c80',
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query:'',

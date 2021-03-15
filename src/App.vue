@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link class="header-button" to="/">Home</router-link> |
-      <router-link class="header-button" to="/about">About</router-link>  |
+      <router-link class="header-button" to="/">Metéo</router-link> |
+      <router-link class="header-button" to="/about">Localisation</router-link>  |
       <router-link class="header-button" to="/pollution">Pollution</router-link>
     </div>
     <router-view/>

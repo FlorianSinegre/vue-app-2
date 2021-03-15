@@ -1,28 +1,37 @@
 
     <template>
       <div id="pollutionVue">
+
+        <h1 style="margin-top: 50px; font-size: 30px" >Entrez les coordonnées d'une region pour afficher la concentration de pollution de celle-ci.</h1>
         <v-text-field
             placeholder="latidude"
             :rules="rules"
             hide-details="auto"
             v-model="query" @keypress="fetchWeather"
+            style="width: 200px; margin: auto; margin-top: 50px"
         ></v-text-field>
-        <v-text-field  placeholder="longitude" v-model="query2" @keypress="fetchWeather"></v-text-field>
+        <v-text-field  placeholder="longitude" v-model="query2" @keypress="fetchWeather" style="width: 200px; margin: auto; "></v-text-field>
 
         <div class="weather-wrap" v-if="typeof weather.coord !='undefined'">
           <v-card
               class="mx-auto"
-              max-width="400"
+              max-width="450"
           >
 
             <v-list-item two-line>
               <v-list-item-content>
                 Сoncentration de Monoxide de carbone: {{ weather.list[0].components.co }} μg/m3
+                <br>
                 Сoncentration de Monoxide de nitrogène: {{ weather.list[0].components.no }} μg/m3
+                <br>
                 Сoncentration de Nitrogène dioxide : {{ weather.list[0].components.no2 }} μg/m3
+                <br>
                 Сoncentration d'Ozone : {{ weather.list[0].components.o3}} μg/m3
+                <br>
                 Сoncentration de sulphur de dioxide : {{ weather.list[0].components.so2 }} μg/m3
+                <br>
                 Сoncentration de fines particules : {{ weather.list[0].components.pm2_5 }} μg/m3
+                <br>
                 <v-list-item-title class="headline">
 
 
@@ -30,18 +39,26 @@
 
               </v-list-item-content>
             </v-list-item>
-            <v-card-text>
-            <v-row align="center">
-              <v-col
-                  class="display-5"
-                  cols="6"
-              >
-                qualité de l'air : {{ weather.list[0].main.aqi }}
-              </v-col>
-              <v-col cols="6">
-              </v-col>
-            </v-row>
-            </v-card-text>
+
+
+          </v-card>
+
+          <v-card
+              v-if=" weather.list[0].main.aqi < '3' "
+              elevation="2"
+              style="width: 450px; margin: auto; background-color: green; font-style: italic; font-size: 40px"
+          >
+            qualité de l'air : {{ weather.list[0].main.aqi }} / 5
+
+          </v-card>
+
+          <v-card
+              v-if=" weather.list[0].main.aqi > '3' "
+              elevation="2"
+              style="width: 450px; margin: auto; background-color: red; font-style: italic; font-size: 40px"
+          >
+            qualité de l'air : {{ weather.list[0].main.aqi }} / 5
+
           </v-card>
         </div>
       </div>
@@ -92,3 +109,10 @@
 
     }
     </script>
+
+    <style>
+    .alert{
+      background-color: green;
+      margin: auto;
+    }
+    </style>

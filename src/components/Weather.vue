@@ -2,7 +2,7 @@
   <div id="app">
 
     <div class="search-box">
-      <input type="text"  class="search-bar" placeholder="Rechercher..." v-model="query" @keypress="fetchWeather"/>
+      <input type="text"  class="search-bar" placeholder="Entrez le nom d'une ville" v-model="query" @keypress="fetchWeather"/>
     </div>
 
     <div class="weather-wrap" v-if="typeof weather.main !='undefined'">
